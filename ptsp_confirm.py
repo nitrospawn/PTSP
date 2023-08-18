@@ -1,46 +1,32 @@
 import telebot
-import requests
-import openpyxl
-from io import BytesIO
+import gspread
+from google.oauth2.credentials import Credentials
 
 # Telegram bot token
-TELEGRAM_TOKEN = 'YOUR_TELEGRAM_BOT_TOKEN'
+TELEGRAM_TOKEN = '6423181297:AAHycTrudw0YoAEK165frKnqKfYT_z1yfHg'
 
-# GitHub raw file URL
-GITHUB_RAW_URL = 'https://raw.githubusercontent.com/username/repository/main/file.xlsx'
+# Google Sheets API setup
+SCOPES = ['https://docs.google.com/spreadsheets/d/1ov8u5UPlJ_eB3S_eskhDLh9H4fRWVkbT/edit?usp=sharing&ouid=109711035819875882085&rtpof=true&sd=true']
+creds = None  # Set up credentials
 
 # Initialize Telegram bot
 bot = telebot.TeleBot(TELEGRAM_TOKEN)
 
 @bot.message_handler(commands=['start', 'help'])
 def send_welcome(message):
-    bot.reply_to(message, "Welcome! I can help you search for content in an Excel file.")
+    bot.reply_to(message, "Welcome! I can help you search for content in a Google Sheet.")
 
 @bot.message_handler(func=lambda message: True)
-def search_excel_content(message):
+def search_google_sheet(message):
     query = message.text.lower()
+    # Authenticate with Google Sheets API using creds
 
-    try:
-        excel_content = extract_excel_content(GITHUB_RAW_URL)
-        if query in excel_content:
-            bot.reply_to(message, "itex is ptsp")
-        else:
-            bot.reply_to(message, "Content not found.")
-    except Exception as e:
-        bot.reply_to(message, "An error occurred while processing the file.")
+    # Search for content in Google Sheet
+    # Implement code to search for content in the Google Sheet and check if the content is found
 
-def extract_excel_content(file_url):
-    response = requests.get(file_url)
-    response.raise_for_status()
-    excel_file = BytesIO(response.content)
-
-    wb = openpyxl.load_workbook(excel_file, data_only=True)
-    sheet = wb.active
-
-    content = ""
-    for row in sheet.iter_rows(values_only=True):
-        for cell in row:
-            content += str(cell).lower() + " "
-    return content
+    if content_found:
+        bot.reply_to(message, "itex is ptsp")
+    else:
+        bot.reply_to(message, "Content not found.")
 
 bot.polling()
