@@ -3,7 +3,7 @@ import gspread
 from google.oauth2.credentials import Credentials
 
 # Telegram bot token
-TELEGRAM_TOKEN = '6423181297:AAHycTrudw0YoAEK165frKnqKfYT_z1yfHg'
+TELEGRAM_TOKEN = 'vfvvvvv'
 
 # Google Sheets API setup
 SCOPES = ['https://docs.google.com/spreadsheets/d/1ov8u5UPlJ_eB3S_eskhDLh9H4fRWVkbT/edit?usp=sharing&ouid=109711035819875882085&rtpof=true&sd=true']
