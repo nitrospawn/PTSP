@@ -6,7 +6,7 @@ from google.oauth2.credentials import Credentials
 TELEGRAM_TOKEN = 'vfvvvvv'
 
 # Google Sheets API setup
-SCOPES = ['https://docs.google.com/spreadsheets/d/1ov8u5UPlJ_eB3S_eskhDLh9H4fRWVkbT/edit?usp=sharing&ouid=109711035819875882085&rtpof=true&sd=true']
+SCOPES = ['spread sheet url']
 creds = None  # Set up credentials
 
 # Initialize Telegram bot
